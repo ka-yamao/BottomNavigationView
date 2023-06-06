@@ -5,6 +5,7 @@ import android.view.Menu
 import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -29,14 +30,22 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
 
-        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        supportActionBar!!.setDisplayShowCustomEnabled(true)
-        supportActionBar!!.setCustomView(R.layout.action_bar)
+        // アクションバーにツールバーをセット
+        setSupportActionBar(binding.toolbar)
+        // ツールバーに戻るボタンを設置
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+//        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+//        supportActionBar!!.setDisplayShowCustomEnabled(true)
+//        supportActionBar!!.setCustomView(R.layout.action_bar)
         // Customize the back button
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_launcher_foreground);
+        // supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_launcher_foreground);
 
         // showing the back button in action bar
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+//        supportActionBar?.setHomeButtonEnabled(false)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+//        supportActionBar?.setDisplayShowHomeEnabled(false)
+
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
