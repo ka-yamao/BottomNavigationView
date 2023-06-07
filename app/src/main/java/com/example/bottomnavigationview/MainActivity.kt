@@ -2,6 +2,7 @@ package com.example.bottomnavigationview
 
 import android.os.Bundle
 import android.view.Menu
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,8 @@ import com.example.bottomnavigationview.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,29 +33,16 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications))
 
-        // アクションバーにツールバーをセット
+        // アクションバーへツールバーを設定
         setSupportActionBar(binding.toolbar)
-        // ツールバーに戻るボタンを設置
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-//        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-//        supportActionBar!!.setDisplayShowCustomEnabled(true)
-//        supportActionBar!!.setCustomView(R.layout.action_bar)
-        // Customize the back button
-        // supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_launcher_foreground);
-
-        // showing the back button in action bar
-//        supportActionBar?.setHomeButtonEnabled(false)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(false)
-//        supportActionBar?.setDisplayShowHomeEnabled(false)
-
-
+        // アクションバー(ツールバー)とナビゲーションを連携
         setupActionBarWithNavController(navController, appBarConfiguration)
+        // ボトムナビ と ナビゲーションを連携
         navView.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.action_menu, menu)
+        // menuInflater.inflate(R.menu.action_menu, menu)
 //        val itemswitch = menu.findItem(R.id.switch_action_bar)
 //        itemswitch.setActionView(R.layout.use_switch)
 //        val sw =
@@ -64,4 +54,20 @@ class MainActivity : AppCompatActivity() {
 //        }
         return true
     }
+
+
+// ツールバーに戻るボタンを設置
+// supportActionBar?.setDisplayHomeAsUpEnabled(true)
+// supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+// supportActionBar!!.setDisplayShowCustomEnabled(true)
+// supportActionBar!!.setCustomView(R.layout.action_bar)
+// Customize the back button
+// supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_launcher_foreground);
+
+// showing the back button in action bar
+// supportActionBar?.setHomeButtonEnabled(false)
+// supportActionBar?.setDisplayHomeAsUpEnabled(false)
+// supportActionBar?.setDisplayShowHomeEnabled(false)
+
+
 }

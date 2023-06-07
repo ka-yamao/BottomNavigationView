@@ -5,15 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.bottomnavigationview.MainViewModel
 import com.example.bottomnavigationview.R
 import com.example.bottomnavigationview.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+
+    private val viewModel: MainViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,8 +42,10 @@ class HomeFragment : Fragment() {
         }
 
         textView.setOnClickListener{
-            findNavController().navigate(R.id.action_navigation_home_to_homeSecondFragment)
+            findNavController().navigate(R.id.action_navigation_home_to_homeFragment2)
         }
+
+        binding.webView.loadUrl("https://carpred.com/")
 
         return root
     }
